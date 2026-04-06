@@ -6,7 +6,7 @@ export async function sendDataToSignUp(values) {
   try {
     const options = {
       method: "POST",
-      url: `${API_CONFIG.baseURL}/auth/signup`,
+      url: `/auth/signup`,
       data: {
         name: values.name,
         email: values.email,
@@ -39,7 +39,7 @@ export async function sendDataToLogin(values) {
   try {
     const options = {
       method: "POST",
-      url: `${API_CONFIG.baseURL}/auth/signin`,
+      url: `/auth/signin`,
       data: {
         email: values.email,
         password: values.password,
