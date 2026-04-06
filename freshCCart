@@ -1,0 +1,16 @@
+# Cart Sync & Re-render Bugfix
+
+### Changes Made
+1. **Cart Context (`Cart.context.jsx`)**: 
+   - **Root Cause Identified:** The `handleAddingProductToCart` function was manually merging the newly added product into the existing list of products by using `filter` and manual data struct construction. This was missing essential root object properties like `numOfCartItems` and stripping out important metadata inside the `products` array, returning a corrupted object to the context.
+   - **Fix:** Refactored the `addProductToCart` try-catch block to instead execute `setCartInfo(response.data)`. Because the backend returns the fully updated complete state of the user's cart upon any mutation (similar to endpoints for delete and adjust quantity), directly injecting the API response completely resolves the data structure mismatch.
+   - **Initialization:** Streamlined the default Cartesian values from `useState({ data: { products: [] } })` to include `numOfCartItems: 0` to prevent short flashes of `undefined` values.
+
+2. **Toast Notifications**:
+   - Pulled out the generic `"Product added to cart"` toast from the Context logic. This removes double-firing popups, allowing `ProductCard` and `ProductInfo` custom styled components to launch their own customized popup notifications with the name of the exact product.
+
+### Validation 
+- Components accessing `cartInfo?.data?.products?.some()` will now persistently stay fully synchronized, correctly identifying if they are "Added" or not.
+- Modifying your cart will instantly recalculate quantities dynamically on the Cart page without requiring arbitrary page refreshes.
+
+**The user can verify these changes by adding multiple items to the cart and opening it without a refresh.**

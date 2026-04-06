@@ -1,0 +1,16 @@
+# Fix Cart State Issue
+
+## Goal Description
+The user reported that adding a product makes the button turn gray and cancels other added products. Additionally, opening the cart requires a manual refresh to show the newly added products. This is likely caused by an incorrect state update in `Cart.context.jsx` when handling the `addProductToCart` API response.
+
+## Proposed Changes
+### src/context/Cart.context.jsx
+- Adjust the initialization of `cartInfo` to be `{ data: { products: [] }, numOfCartItems: 0 }`.
+- Fix `handleAddingProductToCart` to properly set the whole updated cart state returned from the API `setCartInfo(response.data)` instead of the destructive manual merging of state. This manual merging breaks `cartInfo.data.products` for existing items, which causes `ProductCard.jsx` optimistic variables to un-render.
+
+### src/components/ProductCard/ProductCard.jsx
+- Remove duplicate toast notification.
+
+## Verification Plan
+1. Check the cart API using `cart-service.js` to confirm the response structure.
+2. Ensure the state in React Context accurately mirrors the API structure after mutations.

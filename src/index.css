@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary-50:#f0fdf4;
+  --color-primary-100:#dcfce7;
+  --color-primary-200:#bbf7d0;
+  --color-primary-300:#86efac;
+  --color-primary-400:#4ade80;
+  --color-primary-500:#22c55e;
+  --color-primary-600:#16a34a;
+  --color-primary-700:#15803d;
+  --color-primary-800:#166534;
+  --color-primary-900:#14532d; 
+
+  --font-poppins:'Poppins', sans-serif;
+  --animate-slidein: slidein 0.3s ease-in-out;
+
+@keyframes slidein {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}}
+
+@layer base {
+  body {
+  @apply font-poppins text-gray-700
+ }
+
+ a ,span{
+  @apply inline-block
+ }
+ a,button{
+  @apply cursor-pointer
+ };
+}
+@layer components {
+  .btn{
+    @apply px-4 py-2 bg-gray-200 text-gray-600 rounded-lg font-semibold hover:bg-gray-300 transition-colors duration-300
+  }
+  .form-control{
+    @apply px-3 py-2 border border-gray-400/50 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent
+  }
+
+}
+@layer container {
+  .container {
+    @apply mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  @apply 
+    text-white ;
+
+  --swiper-navigation-size: 18px; 
+  --swiper-theme-color: #ffffff;
+}
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  font-weight: 700;
+}
+ .swiper-pagination-bullet-active{
+  @apply w-4! bg-white! rounded-full!
+ }
+
+
+
+  /* gallery overrides */
+.modern-product-gallery .image-gallery-icon {
+  @apply transition-colors duration-300;
+  color: #16a34a !important;
+}
+
+.modern-product-gallery .image-gallery-svg {
+  height: 60px !important;
+  width: 30px !important;
+}
+
+.modern-product-gallery .image-gallery-thumbnail {
+  @apply transition-all duration-300 border-2 border-transparent rounded-xl overflow-hidden;
+  width: 80px !important;
+}
+
+.modern-product-gallery .image-gallery-thumbnail:hover,
+.modern-product-gallery .image-gallery-thumbnail.active {
+  border-color: #16a34a !important;
+  @apply shadow-md;
+}
+
+.modern-product-gallery .image-gallery-thumbnail img {
+  @apply rounded-lg;
+}
