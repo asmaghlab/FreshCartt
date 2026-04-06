@@ -10,7 +10,7 @@ export function useBrands(page = 1, limit = 15) {
   });
 
   return { 
-    brands: data?.data?.data, 
+    brands: data?.data?.data || [], 
     metadata: data?.data?.metadata,
     isLoading, 
     isError, 

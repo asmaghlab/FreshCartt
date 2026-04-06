@@ -9,5 +9,5 @@ const {data, isLoading, isError }=useQuery({
     staleTime: 2 * 60 * 1000, // 5 minutes
     gcTime: 5 * 60 * 1000 // 10 minutes   
 })  
-return { categories: data?.data?.data, isLoading, isError }
+return { categories: data?.data?.data || [], isLoading, isError }
 }

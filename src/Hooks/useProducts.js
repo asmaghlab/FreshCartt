@@ -10,7 +10,7 @@ export function useProducts(params = {}) {
   });
 
   return { 
-    products: data?.data?.data, 
+    products: data?.data?.data || [], 
     metadata: data?.data?.metadata,
     isLoading, 
     isError, 
