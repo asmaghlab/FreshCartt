@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import useOnLineStatus from '../../hooks/useOnLineStatus.jsx';
+import useOnLineStatus from '../../Hooks/useOnLineStatus.jsx';
 import { Wifi, CircleAlert, RefreshCw, Search } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
