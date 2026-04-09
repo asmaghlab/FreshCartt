@@ -38,7 +38,7 @@ export default function HomeSlider() {
   ];
 
   return (
-    <div className="mb-0 mx-0 lg:-mx-12">
+    <div className="mb-0 mx-0">
       <Swiper
         slidesPerView={1}
         loop={true}

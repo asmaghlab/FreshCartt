@@ -28,7 +28,8 @@
 
 @layer base {
   body {
-  @apply font-poppins text-gray-700
+  @apply font-poppins text-gray-700;
+  overflow-x: hidden;
  }
 
  a ,span{
